@@ -62,8 +62,8 @@ public class Parser {
             }
             else {
                   if( f.getName().matches(PICASA_CONFIG_FILE)){
-                        System.out.println( "The file is parsed: " + f.getAbsoluteFile() );
                         parseIni(f);
+                        System.out.println( "The file is parsed: " + f.getAbsoluteFile() );
                   }
             }
         }
