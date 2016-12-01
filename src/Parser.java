@@ -84,7 +84,7 @@ public class Parser {
 
                 if( curSection.contains(".album:") ){
                     curSection = curSection.replace(".album:", "");
-                    albums.put(curSection, section.get("name"));
+                    albums.put(curSection, Translit.toTranslit(section.get("name")));
                 } else if ( curSection.contains(".jpg") || curSection.contains(".png") || curSection.contains(".JPG") || curSection.contains(".PNG")) {
                     String curAlbum = section.get("albums");
                     if (!curAlbum.isEmpty()) {
