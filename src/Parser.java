@@ -73,7 +73,7 @@ public class Parser {
     void parseIni(File f){
         try{
             Wini ini = new Wini(f);
-            ArrayList<Map.Entry<String, String>> curFiles = new ArrayList();
+            List<Map.Entry<String, String>> curFiles = new ArrayList();
 //output names of all sections
 //            String target = params.get("-out") + File.separator + curAlbum + File.separator+ curSection;
             Collection<Profile.Section> list = ini.values();
