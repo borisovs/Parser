@@ -8,7 +8,7 @@ public class Parser {
     private final String COMMAND_STRING = "echo f | xcopy /s /e /h /y ";
     private Map<String, String> params;
     private Map<String, String> albums;
-    private List<Map.Entry<String, String>> filesListForCopyScript;
+    private List<Item> filesListForCopyScript;
 
     private String root_path;
     private String out_path;
@@ -106,7 +106,7 @@ public class Parser {
             for (Map.Entry<String, String> entry : curFiles) {
                 String source = f.getParent() + File.separator + entry.getValue();
                 String target = params.get("-out") + File.separator +  albums.get(entry.getKey()) + File.separator + entry.getValue();
-                filesListForCopyScript.add(new AbstractMap.SimpleEntry( source , target ));
+                filesListForCopyScript.add(new Item( source , target ));
 
             }
 
@@ -138,10 +138,10 @@ public class Parser {
      try {
             String script = "script.cmd";
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(script), "Cp866"));
-
-            for (Map.Entry<String, String> entry : filesListForCopyScript) {
+            Collections.sort(filesListForCopyScript);
+            for (Item entry : filesListForCopyScript) {
 //                System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-                out.append(COMMAND_STRING + " \"" + entry.getKey() + "\" \"" + entry.getValue() +"\" ");
+                out.append(COMMAND_STRING + " \"" + entry.getFirst() + "\" \"" + entry.getSecond() +"\" ");
                 out.newLine();
             }
             out.close();
