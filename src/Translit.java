@@ -75,6 +75,7 @@ public class Translit {
         letters.put("э", "e");
         letters.put("ю", "u");
         letters.put("я", "ya");
+        letters.put(" ", "_");
     }
 
 
